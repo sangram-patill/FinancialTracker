@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="datewiseemireport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="44df3315-5bb0-4b17-9b58-c183817bd106">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="from_date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="to_date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="USER_ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    emi.EMIID,
+    emi.DebtID,
+    emi.UserID,
+    emi.PaymentDate,
+    emi.Amount,
+    emi.PaymentMethod,
+    emi.Notes,
+    emi.EMICategoryID,
+    emi.Status,
+    emicategory.EMICategoryName
+FROM
+    emi
+INNER JOIN
+    emicategory ON emi.EMICategoryID = emicategory.EMICategoryID
+WHERE
+    emi.UserID = $P{USER_ID}
+    AND (emi.PaymentDate BETWEEN $P{from_date} AND $P{to_date})]]>
+	</queryString>
+	<field name="EMIID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DebtID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="UserID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PaymentDate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PaymentMethod" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Notes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMICategoryID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMICategoryName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="EMIID">
+		<groupExpression><![CDATA[$F{EMIID}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="150" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="555" height="149" uuid="03544af3-ea1e-4114-ac58-038c8655eb8d"/>
+				<imageExpression><![CDATA["C:\\Users\\sangr\\eclipse-workspace\\FinancialTracker\\src\\main\\webapp\\assets\\images\\reportheader.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="34" width="552" height="1" uuid="c0c3b3af-6de2-47e9-84c7-0082ed44f95e"/>
+			</line>
+			<staticText>
+				<reportElement x="236" y="0" width="135" height="20" uuid="e2af5493-6238-48a3-a115-c8a587de9900"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMI Report]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="95" y="0" width="92" height="20" uuid="868b10fa-7343-4cea-b8f4-3de082f46ad6"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="0" width="92" height="20" uuid="8f210df5-5347-4e9b-b511-83cb8f176a40"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="92" height="20" uuid="e4f44182-e99e-430f-bc7b-884495fa09dc"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="0" width="92" height="20" uuid="7edecd42-2ba2-48b7-acca-d72160c64624"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Mode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="0" width="92" height="20" uuid="20e4921f-0651-4951-910b-1f29cf5f8f4b"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="0" width="92" height="20" uuid="7d10c5f6-92f4-4b59-9fba-bc44934c16a9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sr. No]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="19" width="552" height="1" uuid="91b4d142-f1c1-4b4e-8185-64234febe4a2"/>
+			</line>
+			<line>
+				<reportElement x="3" y="0" width="1" height="19" uuid="2edde6ad-0120-45fa-acf5-eeb43ccbe108"/>
+			</line>
+			<line>
+				<reportElement x="95" y="0" width="1" height="20" uuid="02526d58-ca8a-44ee-9d64-67d7b97d98e1"/>
+			</line>
+			<line>
+				<reportElement x="186" y="0" width="1" height="20" uuid="d18c66f3-8cfd-42ef-81f4-7e79a1f3068f"/>
+			</line>
+			<line>
+				<reportElement x="278" y="0" width="1" height="20" uuid="d80f2582-58d8-416a-9ef6-3127b0336764"/>
+			</line>
+			<line>
+				<reportElement x="371" y="0" width="1" height="20" uuid="7633d6bc-9892-487e-9fed-cd6ece54c77d"/>
+			</line>
+			<line>
+				<reportElement x="463" y="0" width="1" height="20" uuid="f3fdfb86-6043-4303-a6bc-7e0fcb1446d0"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="20" uuid="e4d7ef9c-d378-40e0-bde8-d498a95c1adb"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="3" y="0" width="92" height="20" uuid="38a3d783-ca35-40ce-b8d2-4dbde92afeb5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="4" y="19" width="551" height="1" uuid="6c5fecfa-c57c-4ac1-a46b-84b022f2a585"/>
+			</line>
+			<line>
+				<reportElement x="95" y="0" width="1" height="20" uuid="085f04a6-d671-499c-94b8-0bad79fc30e8"/>
+			</line>
+			<line>
+				<reportElement x="186" y="0" width="1" height="20" uuid="b14e9abe-e24b-4bc0-a378-6a0a1d3a263d"/>
+			</line>
+			<line>
+				<reportElement x="279" y="0" width="1" height="20" uuid="eab1cff1-4969-4281-b25f-60985615ea9a"/>
+			</line>
+			<line>
+				<reportElement x="371" y="0" width="1" height="20" uuid="59df583a-5694-4ada-a8a7-2a7dc7712ac0"/>
+			</line>
+			<line>
+				<reportElement x="463" y="0" width="1" height="20" uuid="bbfa775d-6506-4219-9031-a4408a6e7ddf"/>
+			</line>
+			<line>
+				<reportElement x="4" y="0" width="1" height="20" uuid="d260219d-ee42-492c-85ef-e4a3cc9b393d"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="20" uuid="a0f7b7a8-d193-4952-b460-ad510bfc109a"/>
+			</line>
+			<textField>
+				<reportElement x="186" y="0" width="92" height="20" uuid="ece8a402-fa65-4868-b8be-59886de67b62"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="0" width="92" height="20" uuid="5de01cea-e449-472d-af7b-63a48e0598db"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PaymentDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="92" height="20" uuid="7b4a0f80-52f4-4738-b5c5-bdd695c008b3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EMICategoryName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="0" width="92" height="20" uuid="c66aa4e6-33ce-499a-aa8b-69fd45e09835"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PaymentMethod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="462" y="0" width="92" height="20" uuid="0237b2ad-74e6-4a02-bfb0-2b7819cd1d8e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Notes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

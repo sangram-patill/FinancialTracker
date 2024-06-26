@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="incomereport" language="groovy" pageWidth="595" pageHeight="595" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f4a0535b-d122-437c-9724-f129f321d91e">
+	<property name="ireport.zoom" value="2.143588810000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="USER_ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     income.`IncomeID` AS income_IncomeID,
+     income.`UserID` AS income_UserID,
+     income.`Source` AS income_Source,
+     income.`Amount` AS income_Amount,
+     income.`Date` AS income_Date,
+     income.`IncomeCategoryID` AS income_IncomeCategoryID,
+     income.`Recurring` AS income_Recurring,
+     income.`Description` AS income_Description,
+     income.`Status` AS income_Status
+FROM
+     `income` income
+WHERE income.`UserID` = $P{USER_ID};]]>
+	</queryString>
+	<field name="income_IncomeID" class="java.lang.Integer"/>
+	<field name="income_UserID" class="java.lang.Integer"/>
+	<field name="income_Source" class="java.lang.String"/>
+	<field name="income_Amount" class="java.math.BigDecimal"/>
+	<field name="income_Date" class="java.lang.String"/>
+	<field name="income_IncomeCategoryID" class="java.lang.Integer"/>
+	<field name="income_Recurring" class="java.lang.Boolean"/>
+	<field name="income_Description" class="java.lang.String"/>
+	<field name="income_Status" class="java.lang.String"/>
+	<variable name="TotalIncome" class="java.lang.Double" calculation="Sum"/>
+	<group name="income_IncomeID">
+		<groupExpression><![CDATA[$F{income_IncomeID}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="149" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="555" height="149" uuid="d653e05b-e88a-4799-ae44-7eaa7b5ebb33"/>
+				<imageExpression><![CDATA["C:\\Users\\sangr\\eclipse-workspace\\FinancialTracker\\src\\main\\webapp\\assets\\images\\reportheader.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="339" y="0" width="105" height="35" uuid="deefc4f9-674f-474b-a745-86ba9b4bac5c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Mode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="0" width="105" height="35" uuid="e78c647b-2233-4184-bbac-790e5960ed93"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="0" width="105" height="35" uuid="b23770fd-b06b-4b16-beec-6a986000c307"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="105" height="35" uuid="b7f5d567-516b-41d3-ae83-886452146985"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="105" height="35" uuid="0790a128-70c8-4424-a7dc-75e9c6202f73"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sr. No]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="a4aa5014-d198-4337-8c0d-0719c3a58966"/>
+			</line>
+			<line>
+				<reportElement x="0" y="35" width="555" height="1" uuid="e3e885de-3722-46e5-8bc2-304245c64b74"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="34" uuid="fdbbfc43-e364-442a-b48f-c917c5b016f3"/>
+			</line>
+			<line>
+				<reportElement x="105" y="1" width="1" height="34" uuid="743483a7-de3e-4af9-a026-6e651c85ec4c"/>
+			</line>
+			<line>
+				<reportElement x="217" y="1" width="1" height="35" uuid="7b062561-cfe2-4a71-ac85-3a0172c260fd"/>
+			</line>
+			<line>
+				<reportElement x="330" y="0" width="1" height="36" uuid="bdae1467-0ab5-43ec-b96d-ca098f6d7ad5"/>
+			</line>
+			<line>
+				<reportElement x="444" y="0" width="1" height="36" uuid="fcadc1ac-adec-4326-a701-e82019fd0e0a"/>
+			</line>
+			<line>
+				<reportElement x="554" y="1" width="1" height="35" uuid="290c866e-d670-4083-b23a-f5954acb4c25"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="339" y="0" width="105" height="20" uuid="91a8fc39-3590-4358-b728-c632513609e5"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{income_Source}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="-2" width="105" height="20" uuid="1fb07317-5081-468b-b29f-5aeb0cecac6c"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{income_Amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="104" height="20" uuid="7f037bd0-1775-4b58-9001-3d89bb08f1d2"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{income_Description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="105" height="20" uuid="1527a5d9-a22c-4813-9cca-3043e6d37577"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="19" width="555" height="1" uuid="1da834c5-3860-4aed-a129-7391b6c4d010"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="19" uuid="1a0ea431-efcd-472f-9e0a-790533aa7a49"/>
+			</line>
+			<line>
+				<reportElement x="105" y="0" width="1" height="19" uuid="23455271-e8a1-4462-85fb-a30e5c8d8e54"/>
+			</line>
+			<textField>
+				<reportElement x="113" y="0" width="105" height="18" uuid="3260be47-25a6-4100-ac80-ff18b42b01bb"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{income_Date}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="217" y="-1" width="1" height="21" uuid="468a127e-5271-49c3-9deb-64c9dac59008"/>
+			</line>
+			<line>
+				<reportElement x="330" y="0" width="1" height="20" uuid="f293c38f-852b-4719-8b82-b34382fed8ae"/>
+			</line>
+			<line>
+				<reportElement x="444" y="0" width="1" height="20" uuid="45a91c93-21fa-4c64-9868-0f6982582b5e"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="20" uuid="966c07b2-cd02-4fd9-ac6f-94c569024308"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="42" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="225" y="35" width="100" height="20" uuid="5652877e-a43d-4f8f-8863-314a18941b14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demo" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9bb033db-1721-4e5a-9559-8e801b4ca4fc">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+    income.IncomeID,
+    income.UserID,
+    income.Source,
+    income.Amount,
+    income.Date,
+    income.IncomeCategoryID,
+    income.Description,
+    income.Status,
+    incomecategories.IncomeCategoryName
+FROM
+    income
+INNER JOIN
+    incomecategories ON income.IncomeCategoryID = incomecategories.IncomeCategoryID;]]>
+	</queryString>
+	<field name="IncomeID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="UserID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Source" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IncomeCategoryID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IncomeCategoryName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="IncomeID">
+		<groupExpression><![CDATA[$F{IncomeID}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="0" width="57" height="20" uuid="4b3f9f54-2187-4f0a-9f80-ca0bb402a4db"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="0" width="67" height="20" uuid="feeb350a-72e5-4ce1-8cd7-6ea4731cce92"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Payment Mode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="0" width="67" height="20" uuid="88f7715d-e53d-420e-86cd-7ac06e61833c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="0" width="74" height="20" uuid="ccef4d0e-7aac-43a5-9329-62daa83cfc9b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="0" width="78" height="20" uuid="87fa868d-1353-4f1b-9dc4-f472c640c8c8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Income Source]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="42" height="20" uuid="e8fe9758-17c1-48f0-8d05-126dfd242711"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Sr. No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="88" y="0" width="98" height="20" uuid="04cea417-e733-4c93-986d-eed7a3056e1f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="186" y="0" width="84" height="20" uuid="518aba9f-7f46-4dc2-9f73-5435dafadf9e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Source}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="0" width="81" height="20" uuid="7664ffc3-05a7-4a29-9f03-0572bd3fadbe"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="354" y="0" width="61" height="20" uuid="b8d3d78e-4e64-454f-9828-b2ae473dc452"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="0" width="95" height="20" uuid="a37135e4-4aac-40c9-9920-350e23c41724"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{IncomeCategoryName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="105" height="20" uuid="2df8bb61-2bc4-4339-85a8-68589ca2cb07"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="72" y="133" width="75" height="21" uuid="f5d92a59-5d34-44f3-a355-7d3156f16248"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
